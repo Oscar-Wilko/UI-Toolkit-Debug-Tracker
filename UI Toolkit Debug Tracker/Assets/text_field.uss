@@ -1,0 +1,32 @@
+.textField {
+    color: rgb(255, 0, 0);
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.button {
+    color: rgb(255, 0, 0);
+    background-color: rgb(240, 240, 240);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 60px;
+    justify-content: center;
+}
