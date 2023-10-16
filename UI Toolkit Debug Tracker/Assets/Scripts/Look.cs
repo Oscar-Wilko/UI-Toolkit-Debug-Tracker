@@ -13,9 +13,9 @@ public class Look : MonoBehaviour
 
     private void Update()
     {
-        _xRot -= Input.GetAxis("Mouse Y") * _zSens * Time.deltaTime;
+        _xRot -= Input.GetAxis("Mouse Y") * _zSens;
         _xRot = Mathf.Clamp(_xRot, _minRot, _maxRot);
         transform.localRotation = Quaternion.Euler(_xRot, 0, 0);
-        _body.Rotate(Vector3.up * Input.GetAxis("Mouse X") * _xSens * Time.deltaTime);
+        _body.Rotate(Vector3.up * Input.GetAxis("Mouse X") * _xSens);
     }
 }

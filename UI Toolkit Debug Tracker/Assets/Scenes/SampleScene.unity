@@ -249,8 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minRot: -20
   _maxRot: 40
-  _xSens: 360
-  _zSens: 360
+  _xSens: 6
+  _zSens: 6
   _body: {fileID: 931219887}
 --- !u!1 &705507993
 GameObject:
