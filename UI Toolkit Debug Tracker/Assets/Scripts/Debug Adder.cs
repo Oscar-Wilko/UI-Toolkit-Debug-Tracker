@@ -15,7 +15,7 @@ public class DebugAdder : MonoBehaviour
     private TextField _debug_message;
     const string _ref_reset_button = "ResetButton";
     const string _ref_generate_button = "GenerateButton";
-    const string _ref_debug_type = "DebugType";
+    const string _ref_debug_type = "DebugEnum";
     const string _ref_debug_title = "DebugTitle";
     const string _ref_debug_message = "DebugMessage";
 
@@ -37,12 +37,6 @@ public class DebugAdder : MonoBehaviour
     }
 
     private void AssignButtonCallbacks()
-    {
-        _reset_button?.RegisterCallback<ClickEvent>(ResetButton);
-        _generate_button?.RegisterCallback<ClickEvent>(GenerateButton);
-    }
-
-    private void OnDisable()
     {
         _reset_button?.RegisterCallback<ClickEvent>(ResetButton);
         _generate_button?.RegisterCallback<ClickEvent>(GenerateButton);
