@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
+    public Transform _body;
     public float _minRot;
     public float _maxRot;
     public float _xSens;
     public float _zSens;
-    public Transform _body;
     private float _xRot;
 
+    private DebugTabs _tabs;
+
+    private void Awake()
+    {
+        _tabs = FindObjectOfType<DebugTabs>();
+    }
+
     private void Update()
+    {
+        if (_tabs._selectedTab == DebugTabs.Tabs.None) Turn();
+    }
+
+    /// <summary>
+    /// Turn camera with mouse input
+    /// </summary>
+    private void Turn()
     {
         _xRot -= Input.GetAxis("Mouse Y") * _zSens;
         _xRot = Mathf.Clamp(_xRot, _minRot, _maxRot);

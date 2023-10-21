@@ -14,6 +14,14 @@
     margin-right: 4px;
     margin-top: 4px;
     margin-bottom: 4px;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out-back;
+}
+
+.textField:hover
+{   
+    color: rgb(200, 0, 0);
+    scale: 1.05;
 }
 
 .button {
@@ -29,4 +37,12 @@
     margin-bottom: 4px;
     height: 60px;
     justify-content: center;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out-back;
+}
+
+.button:hover
+{   
+    color: rgb(200, 0, 0);
+    scale: 1.05;
 }
