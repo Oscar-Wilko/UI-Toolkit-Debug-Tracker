@@ -85,22 +85,44 @@ public static class SaveSystem
     public static void SaveDebugs(List<DebugInstance> debugs)
     {
         string saved_data = JsonUtility.ToJson(new SavedDebugs(debugs));
-        File.WriteAllText(GetFileLocation(), saved_data);
+        File.WriteAllText(GetDebugsFileLocation(), saved_data);
     }
 
     public static List<DebugInstance> LoadDebugs()
     {
-        if (File.Exists(GetFileLocation()))
+        if (File.Exists(GetDebugsFileLocation()))
         {
-            string loaded_data = File.ReadAllText(GetFileLocation());
+            string loaded_data = File.ReadAllText(GetDebugsFileLocation());
             List<DebugInstance> debugs = JsonUtility.FromJson<SavedDebugs>(loaded_data).list;
             return debugs;
         }
         return null;
     }
+    
+    public static void SaveCustomisation(DebugCustomiser.CustomData customisation)
+    {
+        string saved_data = JsonUtility.ToJson(customisation);
+        File.WriteAllText(GetCustomisationFileLocation(), saved_data);
+    }
 
-    private static string GetFileLocation()
+    public static DebugCustomiser.CustomData LoadCustomisation()
+    {
+        if (File.Exists(GetCustomisationFileLocation()))
+        {
+            string loaded_data = File.ReadAllText(GetCustomisationFileLocation());
+            DebugCustomiser.CustomData customisation = JsonUtility.FromJson<DebugCustomiser.CustomData>(loaded_data);
+            return customisation;
+        }
+        return null;
+    }
+
+    private static string GetDebugsFileLocation()
     {
         return "Assets/SavedData/debugs.json";
+    }
+
+    private static string GetCustomisationFileLocation()
+    {
+        return "Assets/SavedData/customisation.json";
     }
 }

@@ -12,18 +12,17 @@ public class DebugManager : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += SceneChange;
+        LoadAll();
     }
 
-    private void SceneChange(Scene scene, LoadSceneMode mode)
+    private void OnDestroy()
     {
-        LoadAll();
+        SaveSystem.SaveDebugs(_loggedDebugs);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K)) OutputDebugs();
-        if (Input.GetKeyDown(KeyCode.L)) SaveSystem.SaveDebugs(_loggedDebugs);
+
     }
 
     private void OutputDebugs()

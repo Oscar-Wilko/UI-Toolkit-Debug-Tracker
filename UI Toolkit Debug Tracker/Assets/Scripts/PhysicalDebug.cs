@@ -2,33 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class PhysicalDebug : MonoBehaviour
 {
+    public DebugCustomiser _custom;
     public SpriteRenderer _renderer;
+    public Sprite[] _sprites;
     public DebugInstance _data;
+
+    private void Awake()
+    {
+        _custom = FindObjectOfType<DebugCustomiser>();
+    }
 
     private void Update()
     {
         transform.LookAt(Camera.main.transform.position);
+        RefreshAll();
     }
 
     public void GenerateInstance(DebugInstance data)
     {
         _data = data;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
-        switch(data.type)
-        {
-            case DebugType.Fatal:       _renderer.color = Color.red; break;
-            case DebugType.Risk:        _renderer.color = Color.yellow; break;
-            case DebugType.Warning:     _renderer.color = Color.white; break;
-            case DebugType.Improvement: _renderer.color = Color.blue; break;
-            case DebugType.Design:      _renderer.color = Color.green; break;
-            default:                    _renderer.color = Color.black; break;
-        }
+        RefreshColour();
     }
+
+    private void RefreshAll()
+    {
+        RefreshColour();
+        RefreshIcon();
+    }
+
+    private void RefreshColour()
+    {
+        Color custom_colour = _custom.ColourOfType(_data.type);
+        _renderer.color = custom_colour;
+    }
+
+    private void RefreshIcon()
+    {
+        _renderer.sprite = _sprites[(int)_custom.data._iconType];
+        _renderer.transform.localScale = _custom.data._iconSize;
+    }
+
     void OnDrawGizmos()
     {
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.color = _custom.data._gizmoColour;
         Gizmos.DrawSphere(transform.position, 0.75f);
     }
 }
