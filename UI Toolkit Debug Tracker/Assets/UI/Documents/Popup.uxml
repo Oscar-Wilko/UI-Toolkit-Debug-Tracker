@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style%20Sheets/popup.uss?fileID=7433441132597879392&amp;guid=a0fb3553da64b034ba46000c93640c98&amp;type=3#popup" />
+    <ui:VisualElement name="Window" style="background-color: rgba(8, 0, 0, 0.7); justify-content: space-around; align-self: center; align-items: center; top: 40%; bottom: 40%; width: 30%;">
+        <ui:Label tabindex="-1" text="[Invalid Title]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="Title" />
+        <ui:Label tabindex="-1" text="You must have a title for the debug" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Description" class="Description" />
+    </ui:VisualElement>
+</ui:UXML>

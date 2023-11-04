@@ -3,13 +3,19 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+[ExecuteInEditMode]
 public class DebugManager : MonoBehaviour
 {
     private List<DebugInstance> _loggedDebugs = new List<DebugInstance>();
-    private List<GameObject> _physicalDebugs = new List<GameObject>();
+    [SerializeField] private List<GameObject> _physicalDebugs = new List<GameObject>();
     public GameObject _physicalPrefab;
 
     private void Awake()
+    {
+        SceneManager.sceneLoaded += SceneChange;
+    }
+
+    private void SceneChange(Scene scene, LoadSceneMode mode)
     {
         LoadAll();
     }
@@ -111,7 +117,7 @@ public class DebugManager : MonoBehaviour
         List<string> titles = new List<string>();
         foreach(DebugInstance debug in _loggedDebugs)
         {
-            titles.Add(debug.title + " " + debug.date.ToString());
+            titles.Add(debug.title + " " + debug.date);
         }
         return titles;
     }
@@ -121,6 +127,7 @@ public class DebugManager : MonoBehaviour
     /// </summary>
     private void LoadAll()
     {
+        UnloadAll();
         _loggedDebugs = SaveSystem.LoadDebugs();
         if (_loggedDebugs == null) _loggedDebugs = new List<DebugInstance>();
         foreach(DebugInstance debug in _loggedDebugs)
@@ -128,6 +135,19 @@ public class DebugManager : MonoBehaviour
             if (debug.scene != SceneManager.GetActiveScene().name) continue;
             CreateInstance(debug);
         }
+    }
+    
+    /// <summary>
+    /// Unload all debug instances
+    /// </summary>
+    private void UnloadAll()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+        _physicalDebugs.Clear();
+        _loggedDebugs.Clear();
     }
 
     /// <summary>
