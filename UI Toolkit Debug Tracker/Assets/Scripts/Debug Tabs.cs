@@ -36,6 +36,10 @@ public class DebugTabs : MonoBehaviour
         _doc = GetComponent<UIDocument>();
         GetUIReferences();
         AssignButtonCallbacks();
+    }
+
+    private void Start()
+    {
         SelectTab(0);
     }
 
