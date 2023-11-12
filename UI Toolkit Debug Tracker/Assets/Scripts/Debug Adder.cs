@@ -95,12 +95,14 @@ public class DebugAdder : MonoBehaviour
     private void GenerateButton(ClickEvent _event)
     {
         if (!Validate()) return;
+
+        Transform cur_target = _manager._debugMode ? Camera.main.transform : _target;
         _manager.AddNewDebug(new DebugInstance(
             (DebugType)_debug_type?.value, 
             _debug_title?.value, 
             _debug_message?.value, 
             DateTime.Now.ToString(), 
-            new float[] { _target.position.x, _target.position.y, _target.position.z }, 
+            new float[] { cur_target.position.x, cur_target.position.y, cur_target.position.z }, 
             SceneManager.GetActiveScene().name,
             (UrgencyType)_debug_urgency?.value,
             _debug_author?.value,

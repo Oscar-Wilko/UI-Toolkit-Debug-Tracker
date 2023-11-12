@@ -9,6 +9,7 @@ public class DebugManager : MonoBehaviour
     private List<DebugInstance> _loggedDebugs = new List<DebugInstance>();
     [SerializeField] private List<GameObject> _physicalDebugs = new List<GameObject>();
     public GameObject _physicalPrefab;
+    public bool _debugMode;
 
     private void Awake()
     {
@@ -22,7 +23,15 @@ public class DebugManager : MonoBehaviour
 
     private void Update()
     {
+        CheckDebugToggle();
+    }
 
+    private void CheckDebugToggle()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.E))
+        {
+            _debugMode = !_debugMode;
+        }
     }
 
     private void OutputDebugs()
@@ -57,6 +66,7 @@ public class DebugManager : MonoBehaviour
         int index = _loggedDebugs.IndexOf(old_debug);
         _loggedDebugs.Insert(index, new_debug);
         _loggedDebugs.Remove(old_debug);
+        SaveSystem.SaveDebugs(_loggedDebugs);
 
         for (int i = 0; i < _physicalDebugs.Count; i++)
         {
@@ -76,7 +86,10 @@ public class DebugManager : MonoBehaviour
     /// <param name="data">DebugInstance of data</param>
     public void RemoveDebug(DebugInstance data)
     {
-        for(int i = 0; i < _physicalDebugs.Count; i ++)
+        _loggedDebugs.Remove(data);
+        SaveSystem.SaveDebugs(_loggedDebugs);
+
+        for (int i = 0; i < _physicalDebugs.Count; i ++)
         {
             DebugInstance inst = _physicalDebugs[i].GetComponent<PhysicalDebug>()._data;
             if (inst.title != data.title) continue;
@@ -88,8 +101,6 @@ public class DebugManager : MonoBehaviour
             _physicalDebugs.RemoveAt(i);
             i++;
         }
-
-        _loggedDebugs.Remove(data);
     }
 
     /// <summary>
@@ -157,7 +168,7 @@ public class DebugManager : MonoBehaviour
     private GameObject CreateInstance(DebugInstance debug)
     {
         GameObject obj = Instantiate(_physicalPrefab, transform);
-        obj.GetComponent<PhysicalDebug>().GenerateInstance(debug);
+        obj.GetComponent<PhysicalDebug>().GenerateInstance(debug, this);
         _physicalDebugs.Add(obj);
         return obj;
     }

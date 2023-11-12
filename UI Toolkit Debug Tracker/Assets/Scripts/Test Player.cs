@@ -8,6 +8,7 @@ public class TestPlayer : MonoBehaviour
     private CharacterController _characterController;
     private Rigidbody _rb;
     private DebugTabs _tabs;
+    private DebugManager _manager;
 
     private Vector3 _vel;
     private bool _isGrounded;
@@ -22,18 +23,28 @@ public class TestPlayer : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _characterController = GetComponent<CharacterController>();
         _tabs= FindObjectOfType<DebugTabs>();
+        _manager = FindObjectOfType<DebugManager>();
     }
 
     void Update()
     {
-        _characterController.enabled = _tabs._selectedTab == DebugTabs.Tabs.None;
-        _rb.isKinematic = _tabs._selectedTab != DebugTabs.Tabs.None;
-        if (_tabs._selectedTab == DebugTabs.Tabs.None) 
+        _characterController.enabled = CanMove();
+        _rb.isKinematic = CanMove();
+        if (CanMove()) 
         {
             CheckGrounded();
             Move();
             Fall();
         }
+    }
+
+    private bool CanMove()
+    {
+        if (_tabs._selectedTab != DebugTabs.Tabs.None)
+            return false;
+        if (_manager._debugMode)
+            return false;
+        return true;
     }
 
     /// <summary>

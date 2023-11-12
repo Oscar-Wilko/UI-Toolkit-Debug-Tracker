@@ -43,6 +43,22 @@ public class DebugTabs : MonoBehaviour
         SelectTab(0);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SelectTab(Tabs.Create);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SelectTab(Tabs.Edit);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SelectTab(Tabs.View);
+        }
+    }
+
     /// <summary>
     /// Gather all ui references from reference strings
     /// </summary>

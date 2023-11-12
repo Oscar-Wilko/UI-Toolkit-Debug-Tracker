@@ -28,6 +28,8 @@ public class DebugCustomiser : MonoBehaviour
         public Vector3 _iconSize;
         public List<CustomColour> _debugColours;
         public Color _gizmoColour;
+        public bool _showCB;
+        public bool _showDebugs;
     }
     public CustomData data;
 

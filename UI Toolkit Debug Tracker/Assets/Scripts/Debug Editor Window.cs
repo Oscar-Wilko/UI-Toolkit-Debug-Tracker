@@ -9,6 +9,8 @@ public class DebugEditorWindow : EditorWindow
     private List<DebugCustomiser.CustomColour> debugColours;
     private Color gizmoColour;
     private Vector3 iconSize;
+    private bool showCB;
+    private bool showDebugs;
 
     [MenuItem("Window/Customizer")]
     public static void ShowWindow()
@@ -51,6 +53,16 @@ public class DebugEditorWindow : EditorWindow
 
         gizmoColour = EditorGUILayout.ColorField("Colour Of Debug Gizmos", gizmoColour);
         customiser.data._gizmoColour = gizmoColour;
+
+        EditorGUILayout.Space(10);
+
+        showCB = EditorGUILayout.Toggle("Colour Blind Mode", showCB);
+        customiser.data._showCB = showCB;
+
+        EditorGUILayout.Space(10);
+
+        showDebugs = EditorGUILayout.Toggle("Show Only In Debug Mode", showDebugs);
+        customiser.data._showDebugs = showDebugs;
     }
 
     private void InitialiseVariables()
@@ -60,5 +72,7 @@ public class DebugEditorWindow : EditorWindow
         iconSize = customiser.data._iconSize;
         debugColours = customiser.data._debugColours;
         gizmoColour = customiser.data._gizmoColour;
+        showCB = customiser.data._showCB;
+        showDebugs = customiser.data._showDebugs;
     }
 }

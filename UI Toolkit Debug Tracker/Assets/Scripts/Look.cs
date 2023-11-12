@@ -12,15 +12,27 @@ public class Look : MonoBehaviour
     private float _xRot;
 
     private DebugTabs _tabs;
+    private DebugManager _manager;
 
     private void Awake()
     {
         _tabs = FindObjectOfType<DebugTabs>();
+        _manager = FindObjectOfType<DebugManager>();
     }
 
     private void Update()
     {
-        if (_tabs._selectedTab == DebugTabs.Tabs.None) Turn();
+        if (CanTurn()) 
+            Turn();
+    }
+
+    private bool CanTurn()
+    {
+        if (_tabs._selectedTab != DebugTabs.Tabs.None)
+            return false;
+        if (_manager._debugMode)
+            return false;
+        return true;
     }
 
     /// <summary>
