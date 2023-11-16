@@ -6,14 +6,15 @@ public class FreeCam : MonoBehaviour
 {
     private DebugTabs _tabs;
     private DebugManager _manager;
+
     public float _moveSpeed;
     public float _fastMoveSpeed;
     public float _minRot;
     public float _maxRot;
     public float _xSens;
     public float _zSens;
-    private float _xRot;
-    private float _yRot;
+    public float _xRot;
+    public float _yRot;
 
     private void Awake()
     {
@@ -50,8 +51,25 @@ public class FreeCam : MonoBehaviour
     private void Turn()
     {
         _xRot -= Input.GetAxis("Mouse Y") * _zSens;
+        while (_xRot > 180)
+            _xRot -= 360;
         _xRot = Mathf.Clamp(_xRot, _minRot, _maxRot);
         _yRot += Input.GetAxis("Mouse X") * _xSens;
         transform.rotation = Quaternion.Euler(_xRot, _yRot, 0);
+    }
+
+    public void LookToPosition(Vector3 pos)
+    {
+        transform.LookAt(pos);
+        _xRot = transform.rotation.eulerAngles.x;
+        _yRot = transform.rotation.eulerAngles.y;
+    }
+
+    public void LookToPosition(float[] pos)
+    {
+        if (pos.Length < 3)
+            return;
+        _manager._debugMode = true;
+        LookToPosition(new Vector3(pos[0], pos[1], pos[2]));
     }
 }

@@ -30,13 +30,35 @@ public class DebugCustomiser : MonoBehaviour
         public Color _gizmoColour;
         public bool _showCB;
         public bool _showDebugs;
+        public Color _titleColour;
+        public KeyCode _createKey;
+        public KeyCode _editKey;
+        public KeyCode _viewKey;
+        public bool _showUI;
+
+        public CustomData(CustomData data)
+        {
+            _iconType = data._iconType; 
+            _iconSize = data._iconSize;
+            _debugColours = new List<CustomColour>(data._debugColours);
+            _gizmoColour = data._gizmoColour;
+            _showCB = data._showCB;
+            _showDebugs = data._showDebugs;
+            _titleColour = data._titleColour;
+            _createKey = data._createKey;
+            _editKey = data._editKey;
+            _viewKey = data._viewKey;
+            _showUI = data._showUI;
+        }
     }
     public CustomData data;
+    public CustomData defaultData;
 
     private void Awake()
     {
         CustomData in_data = SaveSystem.LoadCustomisation();
-        if (in_data != null) data = in_data;
+        if (in_data != null) 
+            data = in_data;
     }
 
     private void OnDestroy()

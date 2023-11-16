@@ -12,6 +12,7 @@ public class DebugTabs : MonoBehaviour
         View
     }
     // Debugs
+    public DebugCustomiser _custom;
     public DebugViewer _viewer;
     public DebugEditor _editor;
     // Documents
@@ -45,15 +46,16 @@ public class DebugTabs : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        _doc.enabled = _custom.data._showUI;
+        if (Input.GetKeyDown(_custom.data._createKey))
         {
             SelectTab(Tabs.Create);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(_custom.data._editKey))
         {
             SelectTab(Tabs.Edit);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(_custom.data._viewKey))
         {
             SelectTab(Tabs.View);
         }

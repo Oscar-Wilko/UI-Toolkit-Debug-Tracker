@@ -18,8 +18,7 @@
     transition-timing-function: ease-out-back;
 }
 
-.textField:hover
-{   
+.textField:hover {
     color: rgb(200, 0, 0);
     scale: 1.05;
 }
@@ -41,8 +40,7 @@
     transition-timing-function: ease-out-back;
 }
 
-.button:hover
-{   
+.button:hover {
     color: rgb(200, 0, 0);
     scale: 1.05;
 }

@@ -98,6 +98,7 @@ public class DebugEditor : MonoBehaviour
         DebugInstance data = _manager.GetDebugs()[index];
         _currentIndex = index;
         _info_element.visible = true;
+        FindObjectOfType<FreeCam>().LookToPosition(data.position);
         _debug_type.SetValueWithoutNotify(data.type);
         _debug_urgency.SetValueWithoutNotify(data.urgency);
         _debug_title.SetValueWithoutNotify(data.title);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,30 @@ public class DebugViewer : MonoBehaviour
     {
         _doc = GetComponent<UIDocument>();
         GetUIReferences();
+    }
+
+    private void Update()
+    {
+        CheckClick();
+    }
+
+    private void CheckClick()
+    {
+        if (!_manager._debugMode || !Input.GetMouseButtonDown(0))
+            return;
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 500.0f))
+        {
+            PhysicalDebug debug = hit.transform.GetComponent<PhysicalDebug>();
+            if (debug)
+            {
+                if (_tabs._selectedTab != DebugTabs.Tabs.Edit)
+                    _tabs.SelectTab(DebugTabs.Tabs.Edit);
+                _editor.ViewSelectDebug(_manager.GetDebugs().IndexOf(debug._data));
+            }
+        }
     }
 
     /// <summary>

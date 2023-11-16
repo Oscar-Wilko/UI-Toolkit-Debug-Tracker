@@ -11,6 +11,12 @@ public class DebugEditorWindow : EditorWindow
     private Vector3 iconSize;
     private bool showCB;
     private bool showDebugs;
+    private Color titleColour;
+    private bool resetButton;
+    private KeyCode createKey;
+    private KeyCode editKey;
+    private KeyCode viewKey;
+    private bool showUI;
 
     [MenuItem("Window/Customizer")]
     public static void ShowWindow()
@@ -21,7 +27,7 @@ public class DebugEditorWindow : EditorWindow
     private void OnGUI()
     {
         InitialiseVariables();
-        if (customiser == null)
+        if (customiser == null || customiser.data == null)
         {
             GUILayout.Label("No Debug Customiser Found In Scene. Check If Debug Prefab Is In Hierarchy.");
             return;
@@ -54,25 +60,72 @@ public class DebugEditorWindow : EditorWindow
         gizmoColour = EditorGUILayout.ColorField("Colour Of Debug Gizmos", gizmoColour);
         customiser.data._gizmoColour = gizmoColour;
 
+        EditorGUILayout.Space(5);
+
+        titleColour = EditorGUILayout.ColorField("Colour of Debug Title", titleColour);
+        customiser.data._titleColour = titleColour;
+
         EditorGUILayout.Space(10);
 
         showCB = EditorGUILayout.Toggle("Colour Blind Mode", showCB);
         customiser.data._showCB = showCB;
 
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space(5);
 
         showDebugs = EditorGUILayout.Toggle("Show Only In Debug Mode", showDebugs);
         customiser.data._showDebugs = showDebugs;
+        
+        EditorGUILayout.Space(5);
+
+        showUI = EditorGUILayout.Toggle("Show Tabs UI", showUI);
+        customiser.data._showUI = showUI;
+
+        EditorGUILayout.Space(10);
+
+        createKey = (KeyCode)EditorGUILayout.EnumPopup("Keybind To Create Debug", createKey);
+        customiser.data._createKey = createKey;
+        
+        EditorGUILayout.Space(5);
+
+        editKey = (KeyCode)EditorGUILayout.EnumPopup("Keybind To Edit Debug", editKey);
+        customiser.data._editKey = editKey;
+        
+        EditorGUILayout.Space(5);
+
+        viewKey = (KeyCode)EditorGUILayout.EnumPopup("Keybind To View Debug", viewKey);
+        customiser.data._viewKey = viewKey;
+
+        EditorGUILayout.Space(10);
+
+        resetButton = GUILayout.Button("Reset To Default");
+        if (resetButton)
+            ResetToDefault();
     }
 
     private void InitialiseVariables()
     {
         customiser = FindObjectOfType<DebugCustomiser>();
-        iconType = customiser.data._iconType;
-        iconSize = customiser.data._iconSize;
-        debugColours = customiser.data._debugColours;
-        gizmoColour = customiser.data._gizmoColour;
-        showCB = customiser.data._showCB;
-        showDebugs = customiser.data._showDebugs;
+        GetCustomVars(customiser.data);
+    }
+
+    private void ResetToDefault()
+    {
+        customiser.data = new DebugCustomiser.CustomData(customiser.defaultData);
+        GetCustomVars(customiser.defaultData);
+    }
+
+    private void GetCustomVars(DebugCustomiser.CustomData data)
+    {
+        iconType = data._iconType;
+        iconSize = data._iconSize;
+        debugColours = data._debugColours;
+        gizmoColour = data._gizmoColour;
+        showCB = data._showCB;
+        showDebugs = data._showDebugs;
+        titleColour = data._titleColour;
+        createKey = data._createKey;
+        editKey = data._editKey;
+        viewKey = data._viewKey;
+        showUI = data._showUI;
     }
 }

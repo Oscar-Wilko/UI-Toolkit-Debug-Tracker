@@ -48,11 +48,14 @@ MonoBehaviour:
   _custom: {fileID: 0}
   _visual: {fileID: 0}
   _cb_icon: {fileID: 0}
+  _title: {fileID: 0}
   _sprites:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   _cb_sprites: []
+  _innerAngleFalloff: 0
+  _outerAngleFalloff: 0
   _data:
     type: 1
     title: Trapped
@@ -268,7 +271,7 @@ MonoBehaviour:
     - type: 0
       color: {r: 1, g: 0, b: 0, a: 1}
     - type: 1
-      color: {r: 1, g: 0.56423336, b: 0, a: 1}
+      color: {r: 1, g: 0.5501839, b: 0, a: 1}
     - type: 2
       color: {r: 0.8769978, g: 1, b: 0, a: 1}
     - type: 3
@@ -277,6 +280,34 @@ MonoBehaviour:
       color: {r: 0, g: 1, b: 0.8556876, a: 1}
     _gizmoColour: {r: 1, g: 0, b: 0, a: 0.5019608}
     _showCB: 0
+    _showDebugs: 1
+    _titleColour: {r: 1, g: 1, b: 1, a: 1}
+    _createKey: 0
+    _editKey: 0
+    _viewKey: 0
+    _showUI: 0
+  defaultData:
+    _iconType: 0
+    _iconSize: {x: 4, y: 4, z: 4}
+    _debugColours:
+    - type: 0
+      color: {r: 1, g: 0, b: 0, a: 1}
+    - type: 1
+      color: {r: 1, g: 0.5501839, b: 0, a: 1}
+    - type: 2
+      color: {r: 0.8769978, g: 1, b: 0, a: 1}
+    - type: 3
+      color: {r: 0.030668855, g: 1, b: 0, a: 1}
+    - type: 4
+      color: {r: 0, g: 1, b: 0.8556876, a: 1}
+    _gizmoColour: {r: 1, g: 0, b: 0, a: 0.5019608}
+    _showCB: 0
+    _showDebugs: 0
+    _titleColour: {r: 1, g: 1, b: 1, a: 1}
+    _createKey: 0
+    _editKey: 0
+    _viewKey: 0
+    _showUI: 1
 --- !u!1 &4272540034456218562
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770d31dcbb8df6543bd96050d54abfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _custom: {fileID: 4880794563341663808}
   _viewer: {fileID: 3716976380047481147}
   _editor: {fileID: 5060974797870299711}
   _createDoc: {fileID: 682332117522979604}
