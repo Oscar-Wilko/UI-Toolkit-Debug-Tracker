@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class DebugViewer : MonoBehaviour
@@ -31,7 +32,7 @@ public class DebugViewer : MonoBehaviour
 
     private void CheckClick()
     {
-        if (!_manager._debugMode || !Input.GetMouseButtonDown(0))
+        if (!_manager._debugMode || !Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject())
             return;
 
         RaycastHit hit;

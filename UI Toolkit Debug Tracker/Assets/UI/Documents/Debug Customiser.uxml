@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/Style%20Sheets/customiser.uss?fileID=7433441132597879392&amp;guid=0af1f8c53e8152e4caa7d22049973943&amp;type=3#customiser" />
+    <ui:ScrollView>
+        <ui:Label tabindex="-1" text="Style And Size Of Icons" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" />
+        <ui:EnumField label="Icon Type For Debugs" type="DebugCustomiser+IconType, Assembly-CSharp" name="IconType" class="var" />
+        <ui:Vector3Field label="Icon Size For Debugs" name="IconSize" class="var" />
+        <ui:Label tabindex="-1" text="Colour Of Debugs" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" />
+        <uie:ColorField label="Fatal Debugs" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="FatalColour" class="var" />
+        <uie:ColorField label="Risk Debugs" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="RiskColour" class="var" />
+        <uie:ColorField label="Warning Debugs" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="WarningColour" class="var" />
+        <uie:ColorField label="Improvement Debugs" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="ImpColour" class="var" />
+        <uie:ColorField label="Design Debugs" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="DesignColour" class="var" />
+        <ui:Label tabindex="-1" text="Other Colours" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" style="-unity-font-style: bold; font-size: 15px; -unity-text-align: upper-center;" />
+        <uie:ColorField label="Colour Of Debug Gizmos" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="GizmoColour" class="var" />
+        <uie:ColorField label="Colour Of Debug Title" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="TitleColour" class="var" />
+        <ui:Label tabindex="-1" text="Toggles" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" />
+        <ui:Toggle label="Colour Blind Mode" name="ShowCB" class="var" />
+        <ui:Toggle label="Show Only In Debug Mode" name="ShowDebugs" class="var" />
+        <ui:Toggle label="Show Tabs UI" name="ShowUI" class="var" />
+        <ui:Label tabindex="-1" text="Keybinds" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" />
+        <ui:EnumField label="Keybind To Create Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="CreateKey" class="var" />
+        <ui:EnumField label="Keybind To Edit Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="EditKey" class="var" />
+        <ui:EnumField label="Keybind To View Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="ViewKey" class="var" />
+        <ui:Button text="Reset To Default" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResetButton" />
+    </ui:ScrollView>
+</ui:UXML>
