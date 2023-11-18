@@ -121,6 +121,28 @@ public class DebugManager : MonoBehaviour
     {
         return _loggedDebugs;
     }
+    
+    /// <summary>
+    /// Get current debug list of debugs in current scene
+    /// </summary>
+    /// <returns>list of DebugInstances</returns>
+    public List<DebugInstance> GetDebugsInScene()
+    {
+        return GetDebugsInScene(SceneManager.GetActiveScene().name);
+    }
+    
+    /// <summary>
+    /// Get current debug list of debugs in current scene with scene name
+    /// </summary>
+    /// <returns>list of DebugInstances</returns>
+    public List<DebugInstance> GetDebugsInScene(string name)
+    {
+        List<DebugInstance> instances = new List<DebugInstance>();
+        foreach(DebugInstance inst in _loggedDebugs)
+            if (inst.scene == name)
+                instances.Add(inst);
+        return instances;
+    }
 
     public List<string> GetTitles()
     {
@@ -129,6 +151,20 @@ public class DebugManager : MonoBehaviour
         {
             titles.Add(debug.title + " " + debug.date);
         }
+        return titles;
+    }
+    
+    public List<string> GetTitlesInScene()
+    {
+        return GetTitlesInScene(SceneManager.GetActiveScene().name);
+    }
+    
+    public List<string> GetTitlesInScene(string name)
+    {
+        List<string> titles = new List<string>();
+        foreach(DebugInstance debug in _loggedDebugs)
+            if (debug.scene == name)
+                titles.Add(debug.title + " " + debug.date);
         return titles;
     }
 

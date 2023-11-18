@@ -28,6 +28,8 @@ public class Look : MonoBehaviour
 
     private bool CanTurn()
     {
+        if (!_tabs || !_manager)
+            return true;
         if (_tabs._selectedTab != DebugTabs.Tabs.None)
             return false;
         if (_manager._debugMode)

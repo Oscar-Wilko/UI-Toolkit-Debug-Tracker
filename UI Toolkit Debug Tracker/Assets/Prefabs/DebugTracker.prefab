@@ -659,3 +659,4 @@ MonoBehaviour:
   _viewDocument: {fileID: 9197481963319205126, guid: 2efa69ad002c4034c8bf46020b75f689, type: 3}
   _manager: {fileID: 6338357787765024562}
   _editor: {fileID: 5060974797870299711}
+  _filterStyle: {fileID: 7433441132597879392, guid: 71c1ee3e0dc30fb42b20c61f059b06e0, type: 3}

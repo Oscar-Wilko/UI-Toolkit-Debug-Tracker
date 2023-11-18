@@ -82,7 +82,7 @@ public class DebugEditor : MonoBehaviour
     /// <param name="_event">ClickEvent of button</param>
     private void ResetButton(ClickEvent _event)
     {
-        DebugInstance data = _manager.GetDebugs()[_currentIndex];
+        DebugInstance data = _manager.GetDebugsInScene()[_currentIndex];
         _debug_type.SetValueWithoutNotify(data.type);
         _debug_urgency.SetValueWithoutNotify(data.urgency);
         _debug_title.SetValueWithoutNotify(data.title);
@@ -95,7 +95,7 @@ public class DebugEditor : MonoBehaviour
     /// <param name="index">Int of debug index</param>
     private void SelectDebug(int index)
     {
-        DebugInstance data = _manager.GetDebugs()[index];
+        DebugInstance data = _manager.GetDebugsInScene()[index];
         _currentIndex = index;
         _info_element.visible = true;
         FindObjectOfType<FreeCam>().LookToPosition(data.position);
@@ -124,7 +124,7 @@ public class DebugEditor : MonoBehaviour
     private void SaveButton(ClickEvent _event)
     {
         if (!Validate()) return;
-        DebugInstance old_data = _manager.GetDebugs()[_currentIndex];
+        DebugInstance old_data = _manager.GetDebugsInScene()[_currentIndex];
         DebugInstance new_data = new DebugInstance(
             (DebugType)_debug_type.value,
             _debug_title.value, 
@@ -136,12 +136,12 @@ public class DebugEditor : MonoBehaviour
             old_data.author,
             old_data.machine);
         _manager.ReplaceDebug(old_data, new_data);
-        _debug_select.choices = _manager.GetTitles();
+        _debug_select.choices = _manager.GetTitlesInScene();
     }
 
     public void Refresh()
     {
-        _debug_select.choices = _manager.GetTitles();
+        _debug_select.choices = _manager.GetTitlesInScene();
         _debug_select.index = -1;
         _currentIndex = -1;
         _info_element.visible = false;

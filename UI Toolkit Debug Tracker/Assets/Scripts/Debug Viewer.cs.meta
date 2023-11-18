@@ -3,7 +3,12 @@ guid: 84bb194b29d717142902035d785c2bc8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _tabs: {instanceID: 0}
+  - _viewDocument: {instanceID: 0}
+  - _manager: {instanceID: 0}
+  - _editor: {instanceID: 0}
+  - _filterStyle: {fileID: 7433441132597879392, guid: 90413f7484cf638449fefa6175bb16d9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

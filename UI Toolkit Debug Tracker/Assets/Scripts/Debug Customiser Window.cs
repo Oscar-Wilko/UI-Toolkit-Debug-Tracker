@@ -85,6 +85,8 @@ public class DebugCustomiserWindow : EditorWindow
     private void InitialiseVariables()
     {
         customiser = FindObjectOfType<DebugCustomiser>();
+        if (!customiser)
+            return;
         GetCustomVars(customiser.data);
     }
 

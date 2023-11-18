@@ -24,6 +24,8 @@ public class FreeCam : MonoBehaviour
 
     void Update()
     {
+        if (!_tabs || !_manager)
+            return;
         if (!_manager._debugMode)
             SnapBack();
         else if (_tabs._selectedTab == DebugTabs.Tabs.None)

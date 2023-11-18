@@ -40,6 +40,8 @@ public class TestPlayer : MonoBehaviour
 
     private bool CanMove()
     {
+        if (!_tabs || !_manager)
+            return true;
         if (_tabs._selectedTab != DebugTabs.Tabs.None)
             return false;
         if (_manager._debugMode)
