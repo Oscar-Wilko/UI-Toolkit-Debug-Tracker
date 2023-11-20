@@ -105,7 +105,8 @@ public class DebugEditorWindow : EditorWindow
     private void InitialiseVariables()
     {
         customiser = FindObjectOfType<DebugCustomiser>();
-        GetCustomVars(customiser.data);
+        if (customiser)
+            GetCustomVars(customiser.data);
     }
 
     private void ResetToDefault()
