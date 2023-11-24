@@ -8,11 +8,13 @@ using UnityEngine.UIElements;
 
 public class DebugEditor : MonoBehaviour
 {
+    // References & Variables
     private UIDocument _doc;
     [SerializeField] private GameObject popup;
     public DebugManager _manager;
     private int _currentIndex = -1;
-    // Reference Elements
+
+    // UI Reference
     private VisualElement _root;
     private VisualElement _info_element;
     private Button _reset_button;
@@ -24,7 +26,8 @@ public class DebugEditor : MonoBehaviour
     private DropdownField _debug_select;
     private TextField _debug_author;
     private TextField _debug_machine;
-    // Reference Strings
+
+    // UI Const String References 
     const string _ref_reset_button = "ResetButton";
     const string _ref_save_button = "SaveButton";
     const string _ref_debug_type = "DebugEnum";
@@ -45,7 +48,8 @@ public class DebugEditor : MonoBehaviour
 
     private void Update()
     {
-        if (_currentIndex != _debug_select.index && _debug_select.index != -1) SelectDebug(_debug_select.index);
+        if (_currentIndex != _debug_select.index && _debug_select.index != -1) 
+            SelectDebug(_debug_select.index);
     }
 
     /// <summary>
@@ -139,6 +143,9 @@ public class DebugEditor : MonoBehaviour
         _debug_select.choices = _manager.GetTitlesInScene();
     }
 
+    /// <summary>
+    /// Refresh all editor values
+    /// </summary>
     public void Refresh()
     {
         _debug_select.choices = _manager.GetTitlesInScene();
@@ -147,6 +154,10 @@ public class DebugEditor : MonoBehaviour
         _info_element.visible = false;
     }
 
+    /// <summary>
+    /// Checks if current values in UI pass validation
+    /// </summary>
+    /// <returns>Bool if passes validation</returns>
     private bool Validate()
     {
         if (_debug_title?.value == "")

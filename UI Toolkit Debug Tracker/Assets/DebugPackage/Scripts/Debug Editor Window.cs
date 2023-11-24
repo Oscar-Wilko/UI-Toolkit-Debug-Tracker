@@ -1,3 +1,8 @@
+/*
+ *  -----------------------------------------------------
+ *  OLD VERSION OF CUSTOM WINDOW NOT UTILISING UI TOOLKIT
+ *  -----------------------------------------------------
+ * 
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -102,6 +107,9 @@ public class DebugEditorWindow : EditorWindow
             ResetToDefault();
     }
 
+    /// <summary>
+    /// Initialise all variables from customiser
+    /// </summary>
     private void InitialiseVariables()
     {
         customiser = FindObjectOfType<DebugCustomiser>();
@@ -109,12 +117,19 @@ public class DebugEditorWindow : EditorWindow
             GetCustomVars(customiser.data);
     }
 
+    /// <summary>
+    /// Reset all values to default
+    /// </summary>
     private void ResetToDefault()
     {
         customiser.data = new DebugCustomiser.CustomData(customiser.defaultData);
         GetCustomVars(customiser.defaultData);
     }
 
+    /// <summary>
+    /// Set all values based on input data
+    /// </summary>
+    /// <param name="data">CustomData to update to</param>
     private void GetCustomVars(DebugCustomiser.CustomData data)
     {
         iconType = data._iconType;
@@ -130,3 +145,4 @@ public class DebugEditorWindow : EditorWindow
         showUI = data._showUI;
     }
 }
+*/

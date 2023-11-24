@@ -13,6 +13,7 @@ public class DebugViewer : MonoBehaviour
     public DebugTabs _tabs;
     public DebugManager _manager;
     public DebugEditor _editor;
+
     // UI References
     private VisualElement _scrollview;
     private Toggle _filterFatal;
@@ -25,7 +26,8 @@ public class DebugViewer : MonoBehaviour
     private Toggle _filterLater;
     private Toggle _filterWhenever;
     private EnumField _sort;
-    // String Constants
+
+    // UI Const String References
     private const string r_sort = "Sort";
     private const string r_filter_fa = "FilterFatal";
     private const string r_filter_ri = "FilterRisk";
@@ -79,6 +81,9 @@ public class DebugViewer : MonoBehaviour
         FilterList();
     }
 
+    /// <summary>
+    /// Check If Player Clicked On Debug
+    /// </summary>
     private void CheckClick()
     {
         if (!_manager._debugMode || !Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject())
@@ -137,15 +142,24 @@ public class DebugViewer : MonoBehaviour
         SortList();
     }
 
+    /// <summary>
+    /// Filter all view instances based on current filter
+    /// </summary>
     private void FilterList()
     {
         foreach(FilterInstance inst in _filterList)
-        {
-            inst.elm.style.display = FilterCheck(inst.debug) ? DisplayStyle.Flex : DisplayStyle.None;
-        }
+            inst.elm.style.display = 
+                FilterCheck(inst.debug) ? 
+                DisplayStyle.Flex : 
+                DisplayStyle.None;
         _prevSort = (SortChoices)_sort.value;
     }
-
+    
+    /// <summary>
+    /// Check if debug instance passes filter check
+    /// </summary>
+    /// <param name="inst">DebugInstance of debug to check</param>
+    /// <returns>Bool if debug passes filters</returns>
     private bool FilterCheck(DebugInstance inst)
     {
         switch (inst.type)
@@ -193,6 +207,9 @@ public class DebugViewer : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Sort view instances based on sort type
+    /// </summary>
     private void SortList()
     {
         switch ((SortChoices)_sort.value)
@@ -213,6 +230,12 @@ public class DebugViewer : MonoBehaviour
             inst.elm.SendToBack();
     }
 
+    /// <summary>
+    /// Compare to debug instances by their debug type
+    /// </summary>
+    /// <param name="x">First FilterInstance</param>
+    /// <param name="y">Second FilterInstance</param>
+    /// <returns>Int of comparisson value</returns>
     private static int CompareDebugByType(FilterInstance x, FilterInstance y)
     {
         DebugType t_x = x.debug.type;
@@ -226,6 +249,12 @@ public class DebugViewer : MonoBehaviour
         return 0;
     }
 
+    /// <summary>
+    /// Compare to debug instances by their urgency type
+    /// </summary>
+    /// <param name="x">First FilterInstance</param>
+    /// <param name="y">Second FilterInstance</param>
+    /// <returns>Int of comparisson value</returns>
     private static int CompareDebugByUrgency(FilterInstance x, FilterInstance y)
     {
         UrgencyType t_x = x.debug.urgency;
@@ -240,6 +269,12 @@ public class DebugViewer : MonoBehaviour
         return 0;
     }
 
+    /// <summary>
+    /// Compare to debug instances by how new they are
+    /// </summary>
+    /// <param name="x">First FilterInstance</param>
+    /// <param name="y">Second FilterInstance</param>
+    /// <returns>Int of comparisson value</returns>
     private static int CompareDebugByNew(FilterInstance x, FilterInstance y)
     {
         DateTime t_x = DateTime.Parse(x.debug.date).ToUniversalTime();
@@ -253,7 +288,13 @@ public class DebugViewer : MonoBehaviour
 
         return 0;
     }
-    
+
+    /// <summary>
+    /// Compare to debug instances by how old they are
+    /// </summary>
+    /// <param name="x">First FilterInstance</param>
+    /// <param name="y">Second FilterInstance</param>
+    /// <returns>Int of comparisson value</returns>
     private static int CompareDebugByOld(FilterInstance x, FilterInstance y)
     {
         DateTime t_x = DateTime.Parse(x.debug.date).ToUniversalTime();
@@ -268,6 +309,12 @@ public class DebugViewer : MonoBehaviour
         return 0;
     }
 
+    /// <summary>
+    /// Compare to debug instances by their author's name alphabetically
+    /// </summary>
+    /// <param name="x">First FilterInstance</param>
+    /// <param name="y">Second FilterInstance</param>
+    /// <returns>Int of comparisson value</returns>
     private static int CompareDebugByAuthor(FilterInstance x, FilterInstance y)
     {
         return string.Compare(y.debug.author, x.debug.author);
@@ -283,6 +330,10 @@ public class DebugViewer : MonoBehaviour
         _editor.ViewSelectDebug(index);
     }
 
+    /// <summary>
+    /// Delete instance of a debug
+    /// </summary>
+    /// <param name="data">DebugInstance of debug to delete</param>
     public void DeleteViewer(DebugInstance data)
     {
         _manager.RemoveDebug(data);

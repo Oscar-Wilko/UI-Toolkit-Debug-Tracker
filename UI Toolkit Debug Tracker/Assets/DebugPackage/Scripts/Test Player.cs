@@ -5,14 +5,17 @@ using UnityEngine.UIElements;
 
 public class TestPlayer : MonoBehaviour
 {
+    // References
     private CharacterController _characterController;
     private Rigidbody _rb;
     private DebugTabs _tabs;
     private DebugManager _manager;
 
+    // States
     private Vector3 _vel;
     private bool _isGrounded;
 
+    // Other
     public LayerMask _groundMask;
     public float _groundDistance;
     public Transform _groundTransform;
@@ -38,13 +41,15 @@ public class TestPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if player can move in given time
+    /// </summary>
+    /// <returns>Bool if player can move</returns>
     private bool CanMove()
     {
         if (!_tabs || !_manager)
             return true;
-        if (_tabs._selectedTab != DebugTabs.Tabs.None)
-            return false;
-        if (_manager._debugMode)
+        if (_tabs._selectedTab != DebugTabs.Tabs.None || _manager._debugMode)
             return false;
         return true;
     }

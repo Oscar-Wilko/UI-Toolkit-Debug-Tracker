@@ -1826,11 +1826,13 @@ MonoBehaviour:
       color: {r: 0, g: 1, b: 0.8556876, a: 1}
     _gizmoColour: {r: 1, g: 0, b: 0, a: 0.5019608}
     _showCB: 0
-    _showDebugs: 1
+    _showDebugs: 0
     _titleColour: {r: 1, g: 1, b: 1, a: 1}
     _createKey: 49
     _editKey: 50
     _viewKey: 51
+    _panKey: 306
+    _fastKey: 304
     _showUI: 1
   defaultData:
     _iconType: 0
@@ -1853,6 +1855,8 @@ MonoBehaviour:
     _createKey: 257
     _editKey: 258
     _viewKey: 259
+    _panKey: 306
+    _fastKey: 304
     _showUI: 1
 --- !u!1 &3499476153493221157
 GameObject:

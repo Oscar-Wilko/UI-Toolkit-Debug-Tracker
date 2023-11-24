@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
+    // Self References
     public Transform _body;
+
+    // Variables
     public float _minRot;
     public float _maxRot;
     public float _xSens;
     public float _zSens;
     private float _xRot;
 
+    // References
     private DebugTabs _tabs;
     private DebugManager _manager;
 
@@ -26,13 +30,15 @@ public class Look : MonoBehaviour
             Turn();
     }
 
+    /// <summary>
+    /// Checks if object can turn
+    /// </summary>
+    /// <returns>Bool if object can turn</returns>
     private bool CanTurn()
     {
         if (!_tabs || !_manager)
             return true;
-        if (_tabs._selectedTab != DebugTabs.Tabs.None)
-            return false;
-        if (_manager._debugMode)
+        if (_tabs._selectedTab != DebugTabs.Tabs.None || _manager._debugMode)
             return false;
         return true;
     }

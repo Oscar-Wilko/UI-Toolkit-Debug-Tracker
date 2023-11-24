@@ -18,6 +18,11 @@ public class Popup : MonoBehaviour
         StartCoroutine(Timer());
     }
 
+    /// <summary>
+    /// Setup the popup info
+    /// </summary>
+    /// <param name="title">String of popup title</param>
+    /// <param name="desc">String of popup description</param>
     public void SetInfo(string title, string desc)
     {
         Label _title = _root.Q<Label>("Title");
@@ -26,6 +31,10 @@ public class Popup : MonoBehaviour
         _desc.text = desc;
     }
 
+    /// <summary>
+    /// Destroy object after timer, lowering opacity as it decays
+    /// </summary>
+    /// <returns>OEnumerator of function</returns>
     private IEnumerator Timer()
     {
         while (tracker > 0)

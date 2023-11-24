@@ -20,12 +20,13 @@ public class DebugTabs : MonoBehaviour
     public UIDocument _editDoc;
     public UIDocument _viewDoc;
     private UIDocument _doc;
-    // Reference Elements
+    // UI References
     private VisualElement _root;
     private Button _create_button;
     private Button _edit_button;
     private Button _view_button;
-    // Reference Strings
+
+    // UI Const String References 
     const string _ref_create_button = "CreateTab";
     const string _ref_edit_button = "EditTab";
     const string _ref_view_button = "ViewTab";
@@ -48,17 +49,11 @@ public class DebugTabs : MonoBehaviour
     {
         _doc.enabled = _custom.data._showUI;
         if (Input.GetKeyDown(_custom.data._createKey))
-        {
             SelectTab(Tabs.Create);
-        }
         else if (Input.GetKeyDown(_custom.data._editKey))
-        {
             SelectTab(Tabs.Edit);
-        }
         else if (Input.GetKeyDown(_custom.data._viewKey))
-        {
             SelectTab(Tabs.View);
-        }
     }
 
     /// <summary>
@@ -86,6 +81,10 @@ public class DebugTabs : MonoBehaviour
     private void SelectEdit(ClickEvent evt) { SelectTab(Tabs.Edit); }
     private void SelectView(ClickEvent evt) { SelectTab(Tabs.View); }
 
+    /// <summary>
+    /// Select a tab
+    /// </summary>
+    /// <param name="tab">Tabs Enum of chosen tab</param>
     public void SelectTab(Tabs tab)
     {
         if (tab == _selectedTab) tab = Tabs.None;

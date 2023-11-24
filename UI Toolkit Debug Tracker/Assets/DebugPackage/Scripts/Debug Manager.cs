@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 [ExecuteInEditMode]
 public class DebugManager : MonoBehaviour
@@ -18,7 +19,13 @@ public class DebugManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        SaveSystem.SaveDebugs(_loggedDebugs);
+        if (_loggedDebugs.Count > 0)
+            SaveSystem.SaveDebugs(_loggedDebugs);
+    }
+
+    public void RefreshFromFile()
+    {
+        LoadAll();
     }
 
     private void Update()
@@ -26,25 +33,13 @@ public class DebugManager : MonoBehaviour
         CheckDebugToggle();
     }
 
+    /// <summary>
+    /// Check if debug mode toggle has been activated
+    /// </summary>
     private void CheckDebugToggle()
     {
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.E))
-        {
             _debugMode = !_debugMode;
-        }
-    }
-
-    private void OutputDebugs()
-    {
-        foreach(DebugInstance debug in _loggedDebugs)
-        {
-            Debug.Log(
-                "Debug Output: " + 
-                debug.type + " " + 
-                debug.title + " " + 
-                debug.description + " " + 
-                debug.date);
-        }
     }
 
     /// <summary>
@@ -144,6 +139,10 @@ public class DebugManager : MonoBehaviour
         return instances;
     }
 
+    /// <summary>
+    /// Get list of titles of all debugs in file
+    /// </summary>
+    /// <returns>List of strings of titles</returns>
     public List<string> GetTitles()
     {
         List<string> titles = new List<string>();
@@ -154,11 +153,20 @@ public class DebugManager : MonoBehaviour
         return titles;
     }
     
+    /// <summary>
+    /// Get list of titles in current scene
+    /// </summary>
+    /// <returns>List of strings of titles</returns>
     public List<string> GetTitlesInScene()
     {
         return GetTitlesInScene(SceneManager.GetActiveScene().name);
     }
     
+    /// <summary>
+    /// Get list of titles in specific scene
+    /// </summary>
+    /// <param name="name">String of scene name</param>
+    /// <returns>List of string of titles</returns>
     public List<string> GetTitlesInScene(string name)
     {
         List<string> titles = new List<string>();
@@ -189,9 +197,7 @@ public class DebugManager : MonoBehaviour
     private void UnloadAll()
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
-        {
             DestroyImmediate(transform.GetChild(i).gameObject);
-        }
         _physicalDebugs.Clear();
         _loggedDebugs.Clear();
     }

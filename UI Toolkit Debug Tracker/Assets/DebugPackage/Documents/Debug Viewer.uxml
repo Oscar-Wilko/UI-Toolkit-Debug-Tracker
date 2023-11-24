@@ -20,7 +20,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:EnumField label="Sort By" type="DebugViewer+SortChoices, Assembly-CSharp" value="Newest" name="Sort" class="textField" />
-            <ui:ScrollView name="Scroller" focusable="true" style="max-height: 70%;">
+            <ui:ScrollView name="Scroller" focusable="true" mouse-wheel-scroll-size="500" style="max-height: 70%;">
                 <ui:VisualElement name="DebugScroll" />
             </ui:ScrollView>
         </ui:VisualElement>

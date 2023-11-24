@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 [Serializable]
@@ -59,54 +58,55 @@ public static class SaveSystem
         }
     }
 
-    /* BINARY FORMATTED SAVING
+    /// <summary>
+    /// Save List Of Debugs To JSON File
+    /// </summary>
+    /// <param name="debugs">List of DebugInstance's to save</param>
     public static void SaveDebugs(List<DebugInstance> debugs)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(GetFileLocation(), FileMode.Create);
-        formatter.Serialize(stream, debugs);
-        stream.Close();
-    }
-    
-    public static List<DebugInstance> LoadDebugs()
-    {
-        if (!File.Exists(GetFileLocation()))
-        {
-            Debug.LogError("Debug file missing"); 
-            return null;
-        }
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(GetFileLocation(), FileMode.Open);
-        List<DebugInstance> data = formatter.Deserialize(stream) as List<DebugInstance>;
-        stream.Close();
-        return data;
-    }*/
-
-    public static void SaveDebugs(List<DebugInstance> debugs)
-    {
+        FolderCheck();
         string saved_data = JsonUtility.ToJson(new SavedDebugs(debugs));
         File.WriteAllText(GetDebugsFileLocation(), saved_data);
     }
 
+    /// <summary>
+    /// Get List Of Debugs From JSON File
+    /// </summary>
+    /// <returns></returns>
     public static List<DebugInstance> LoadDebugs()
     {
+        FolderCheck();
         if (File.Exists(GetDebugsFileLocation()))
         {
             string loaded_data = File.ReadAllText(GetDebugsFileLocation());
-            List<DebugInstance> debugs = JsonUtility.FromJson<SavedDebugs>(loaded_data).list;
-            return debugs;
+            SavedDebugs data = JsonUtility.FromJson<SavedDebugs>(loaded_data);
+            if (data != null)
+            {
+                List<DebugInstance> debugs = data.list;
+                return debugs;
+            }
         }
         return null;
     }
     
+    /// <summary>
+    /// Save Customisation Data To JSON File
+    /// </summary>
+    /// <param name="customisation">CustomData of customisations</param>
     public static void SaveCustomisation(DebugCustomiser.CustomData customisation)
     {
+        FolderCheck();
         string saved_data = JsonUtility.ToJson(customisation);
         File.WriteAllText(GetCustomisationFileLocation(), saved_data);
     }
 
+    /// <summary>
+    /// Load Customisation Data From JSON File
+    /// </summary>
+    /// <returns>CustomData of customisations</returns>
     public static DebugCustomiser.CustomData LoadCustomisation()
     {
+        FolderCheck();
         if (File.Exists(GetCustomisationFileLocation()))
         {
             string loaded_data = File.ReadAllText(GetCustomisationFileLocation());
@@ -116,13 +116,39 @@ public static class SaveSystem
         return null;
     }
 
+    /// <summary>
+    /// Get File Location Of Debugs
+    /// </summary>
+    /// <returns>String of file location</returns>
     private static string GetDebugsFileLocation()
     {
-        return "Assets/SavedData/debugs.json";
+        return "Assets/DebugPackage/SavedData/debugs.json";
     }
 
+    /// <summary>
+    /// Get File Location Of Cusomisation
+    /// </summary>
+    /// <returns>String of file location</returns>
     private static string GetCustomisationFileLocation()
     {
-        return "Assets/SavedData/customisation.json";
+        return "Assets/DebugPackage/SavedData/customisation.json";
+    }
+
+    /// <summary>
+    /// Get File Location Of SavedData Folder
+    /// </summary>
+    /// <returns>String of file location</returns>
+    private static string GetSavedDataLocation()
+    {
+        return "Assets/DebugPackage/SavedData";
+    }
+
+    /// <summary>
+    /// Checks if save folder exists, if it doesn't, then it creates it
+    /// </summary>
+    private static void FolderCheck()
+    {
+        if (!Directory.Exists(GetSavedDataLocation()))
+            Directory.CreateDirectory(GetSavedDataLocation());
     }
 }

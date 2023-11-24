@@ -34,7 +34,10 @@ public class DebugCustomiser : MonoBehaviour
         public KeyCode _createKey;
         public KeyCode _editKey;
         public KeyCode _viewKey;
+        public KeyCode _panKey;
+        public KeyCode _fastKey;
         public bool _showUI;
+        public bool _lockX;
 
         public CustomData(CustomData data)
         {
@@ -48,7 +51,10 @@ public class DebugCustomiser : MonoBehaviour
             _createKey = data._createKey;
             _editKey = data._editKey;
             _viewKey = data._viewKey;
+            _panKey = data._panKey;
+            _fastKey = data._fastKey;
             _showUI = data._showUI;
+            _lockX = data._lockX;
         }
     }
     public CustomData data;
@@ -66,13 +72,16 @@ public class DebugCustomiser : MonoBehaviour
         SaveSystem.SaveCustomisation(data);
     }
 
+    /// <summary>
+    /// Get Color of debug type
+    /// </summary>
+    /// <param name="type">DebugType to check</param>
+    /// <returns>Color of debug type's colour</returns>
     public Color ColourOfType(DebugType type)
     {
         foreach(CustomColour col in data._debugColours)
-        {
             if (col.type == type)
                 return col.color;
-        }
         return Color.white;
     }
 }

@@ -7,11 +7,13 @@ using UnityEngine.UIElements;
 
 public class DebugAdder : MonoBehaviour
 {
+    // References
     private UIDocument _doc;
     [SerializeField] private GameObject popup;
     public DebugManager _manager;
     public Transform _target;
-    // Reference Elements
+
+    // UI Reference
     private VisualElement _root;
     private Button _reset_button;
     private Button _generate_button;
@@ -21,7 +23,8 @@ public class DebugAdder : MonoBehaviour
     private TextField _debug_message;
     private TextField _debug_author;
     private TextField _debug_machine;
-    // Reference Strings
+
+    // UI Const String Reference
     const string _ref_reset_button      = "ResetButton";
     const string _ref_generate_button   = "GenerateButton";
     const string _ref_debug_type        = "DebugEnum";
@@ -77,6 +80,10 @@ public class DebugAdder : MonoBehaviour
         _debug_urgency.SetValueWithoutNotify((UrgencyType)0);
     }
 
+    /// <summary>
+    /// Obtain machine info into one string
+    /// </summary>
+    /// <returns>String of machine info</returns>
     private string GetMachineInfo()
     {
         string info = "";
@@ -110,6 +117,10 @@ public class DebugAdder : MonoBehaviour
         ResetButton(null);
     }
 
+    /// <summary>
+    /// Checks if all values pass validation
+    /// </summary>
+    /// <returns>Bool if passes validation</returns>
     private bool Validate()
     {
         if (_debug_title?.value == "")
