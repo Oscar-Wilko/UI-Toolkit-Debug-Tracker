@@ -65,7 +65,7 @@ public static class SaveSystem
     public static void SaveDebugs(List<DebugInstance> debugs)
     {
         FolderCheck();
-        string saved_data = JsonUtility.ToJson(new SavedDebugs(debugs));
+        string saved_data = JsonUtility.ToJson(new SavedDebugs(debugs), true);
         File.WriteAllText(GetDebugsFileLocation(), saved_data);
     }
 
@@ -96,7 +96,7 @@ public static class SaveSystem
     public static void SaveCustomisation(DebugCustomiser.CustomData customisation)
     {
         FolderCheck();
-        string saved_data = JsonUtility.ToJson(customisation);
+        string saved_data = JsonUtility.ToJson(customisation, true);
         File.WriteAllText(GetCustomisationFileLocation(), saved_data);
     }
 
