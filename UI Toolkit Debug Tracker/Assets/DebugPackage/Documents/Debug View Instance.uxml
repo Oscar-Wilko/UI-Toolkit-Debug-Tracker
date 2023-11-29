@@ -1,14 +1,16 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Style%20Sheets/view_text.uss?fileID=7433441132597879392&amp;guid=90413f7484cf638449fefa6175bb16d9&amp;type=3#view_text" />
-    <Style src="project://database/Assets/UI/Style%20Sheets/tabs.uss?fileID=7433441132597879392&amp;guid=2c49a0bf15e789f43b025dd83f378087&amp;type=3#tabs" />
+    <Style src="project://database/Assets/DebugPackage/Style%20Sheets/view_text.uss?fileID=7433441132597879392&amp;guid=90413f7484cf638449fefa6175bb16d9&amp;type=3#view_text" />
+    <Style src="project://database/Assets/DebugPackage/Style%20Sheets/tabs.uss?fileID=7433441132597879392&amp;guid=2c49a0bf15e789f43b025dd83f378087&amp;type=3#tabs" />
     <ui:VisualElement name="ViewContainer" style="flex-grow: 1; width: auto; height: 125px; background-color: rgba(0, 0, 0, 0.4); padding-left: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px; margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px;">
-        <ui:VisualElement name="ViewTitle" style="flex-direction: row; justify-content: center; height: 30%;">
-            <ui:Label tabindex="-1" text="Title:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleText" class="view_txt" style="-unity-font-style: bold;" />
-            <ui:Label tabindex="-1" text="Title" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleValue" class="view_txt" />
-        </ui:VisualElement>
-        <ui:VisualElement name="ViewType" style="flex-direction: row; justify-content: center; height: 30%;">
-            <ui:Label tabindex="-1" text="Type:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TypeText" class="view_txt" style="-unity-font-style: bold;" />
-            <ui:Label tabindex="-1" text="Type" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TypeValue" class="view_txt" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-around; align-self: stretch; align-items: center;">
+            <ui:VisualElement name="ViewTitle" style="flex-direction: row; justify-content: center; height: 30%;">
+                <ui:Label tabindex="-1" text="Title:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleText" class="view_txt" style="-unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Title" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleValue" class="view_txt" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ViewType" style="flex-direction: row; justify-content: center; height: 30%;">
+                <ui:Label tabindex="-1" text="Type:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TypeText" class="view_txt" style="-unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Type" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TypeValue" class="view_txt" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ButtonContainer" style="flex-grow: 1; flex-direction: row; justify-content: space-around; align-items: center; align-self: center;">
             <ui:Button text="SELECT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ViewSelect" class="tabButton" style="height: 20%; margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; width: auto; font-size: 30px; color: rgb(255, 255, 255);" />

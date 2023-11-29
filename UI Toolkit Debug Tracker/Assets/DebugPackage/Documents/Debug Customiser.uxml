@@ -19,11 +19,20 @@
         <ui:Toggle label="Show Tabs UI" name="ShowUI" class="var" />
         <ui:Toggle label="Lock X Rot Of Debugs" name="LockX" class="var" />
         <ui:Label tabindex="-1" text="Keybinds" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title" />
-        <ui:EnumField label="Keybind To Create Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="CreateKey" class="var" />
-        <ui:EnumField label="Keybind To Edit Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="EditKey" class="var" />
-        <ui:EnumField label="Keybind To View Debug" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="ViewKey" class="var" />
-        <ui:EnumField label="Keybind To Speed Camera" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="FastKey" class="var" />
-        <ui:EnumField label="Keybind To Halt Camera" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="PanKey" class="var" />
+        <ui:VisualElement name="TabKeys" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px;">
+            <ui:EnumField label="Swap Tab Condition" type="AltKeyCode, Assembly-CSharp" name="TabKey" class="var" />
+            <ui:EnumField label="Create Debug Tab" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="CreateKey" class="var" />
+            <ui:EnumField label="Edit Debug Tab" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="EditKey" class="var" />
+            <ui:EnumField label="View Debug Tab" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="ViewKey" class="var" />
+        </ui:VisualElement>
+        <ui:VisualElement name="CamKeys" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px;">
+            <ui:EnumField label="Speed Camera" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="FastKey" class="var" />
+            <ui:EnumField label="Halt Camera" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="PanKey" class="var" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DebugKeys" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px;">
+            <ui:EnumField label="Toggle Debug Mode Condition" type="AltKeyCode, Assembly-CSharp" name="AltDebugKey" class="var" />
+            <ui:EnumField label="Toggle Debug Mode" type="UnityEngine.KeyCode, UnityEngine.CoreModule" name="DebugKey" class="var" />
+        </ui:VisualElement>
         <ui:Button text="Reset To Default" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResetButton" style="margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px;" />
         <ui:Button text="Refresh Manager From File" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RefreshButton" style="margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px;" />
     </ui:ScrollView>

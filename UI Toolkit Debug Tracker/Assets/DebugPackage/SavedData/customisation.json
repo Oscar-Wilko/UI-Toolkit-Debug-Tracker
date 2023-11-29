@@ -1,8 +1,8 @@
 {
-    "_iconType": 2,
+    "_iconType": 3,
     "_iconSize": {
         "x": 4.0,
-        "y": 100.0,
+        "y": 4.0,
         "z": 4.0
     },
     "_debugColours": [
@@ -66,11 +66,14 @@
         "b": 1.0,
         "a": 1.0
     },
+    "_tabKey": 4,
     "_createKey": 49,
     "_editKey": 50,
     "_viewKey": 51,
     "_panKey": 306,
     "_fastKey": 304,
+    "_altDebugKey": 0,
+    "_debugKey": 101,
     "_showUI": true,
     "_lockX": true
 }

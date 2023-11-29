@@ -11,9 +11,11 @@ public class DebugManager : MonoBehaviour
     [SerializeField] private List<GameObject> _physicalDebugs = new List<GameObject>();
     public GameObject _physicalPrefab;
     public bool _debugMode;
+    public DebugCustomiser _custom;
 
     private void Awake()
     {
+        _custom = FindObjectOfType<DebugCustomiser>();
         LoadAll();
     }
 
@@ -31,6 +33,16 @@ public class DebugManager : MonoBehaviour
     private void Update()
     {
         CheckDebugToggle();
+        CheckDebugSceneTransition();
+    }
+
+    private void CheckDebugSceneTransition()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.P))
+        {
+            int sceneToGoTo = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(1 - sceneToGoTo);
+        }
     }
 
     /// <summary>
@@ -38,8 +50,30 @@ public class DebugManager : MonoBehaviour
     /// </summary>
     private void CheckDebugToggle()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.E))
+        if (AltDebugKey() && Input.GetKeyDown(_custom.data._debugKey))
             _debugMode = !_debugMode;
+    }
+
+    private bool AltDebugKey()
+    {
+        if (!_custom)
+            return false;
+        switch (_custom.data._altDebugKey)
+        {
+            case AltKeyCode.LeftControl:
+                return Input.GetKey(KeyCode.LeftControl);
+            case AltKeyCode.RightControl:
+                return Input.GetKey(KeyCode.RightControl);
+            case AltKeyCode.LeftAlt:
+                return Input.GetKey(KeyCode.LeftAlt);
+            case AltKeyCode.RightAlt:
+                return Input.GetKey(KeyCode.RightAlt);
+            case AltKeyCode.LeftShift:
+                return Input.GetKey(KeyCode.LeftShift);
+            case AltKeyCode.RightShift:
+                return Input.GetKey(KeyCode.RightShift);
+        }
+        return false;
     }
 
     /// <summary>
@@ -72,6 +106,7 @@ public class DebugManager : MonoBehaviour
             if (inst.date != old_debug.date) continue;
             if (inst.scene != old_debug.scene) continue;
             _physicalDebugs[i].GetComponent<PhysicalDebug>()._data = new_debug;
+            _physicalDebugs[i].name = "Debug: " + new_debug.title;
         }
     }
 
@@ -211,6 +246,7 @@ public class DebugManager : MonoBehaviour
     {
         GameObject obj = Instantiate(_physicalPrefab, transform);
         obj.GetComponent<PhysicalDebug>().GenerateInstance(debug, this);
+        obj.name = "Debug: " + debug.title;
         _physicalDebugs.Add(obj);
         return obj;
     }

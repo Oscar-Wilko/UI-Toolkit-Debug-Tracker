@@ -18,6 +18,7 @@
     justify-content: center;
     transition-duration: 0.1s;
     transition-timing-function: ease-out-back;
+    -unity-font-style: bold;
 }
 
 .button:hover {
@@ -28,14 +29,15 @@
 .filter {
     align-self: stretch;
     align-items: center;
-    color: rgb(255, 0, 0);
+    color: rgb(130, 130, 130);
     -unity-font-style: normal;
     -unity-text-align: upper-center;
     flex-direction: row;
+    font-size: 16px;
 }
 
 .textField {
-    color: rgb(255, 0, 0);
+    color: rgb(137, 137, 137);
     flex-direction: column;
     padding-left: 0;
     padding-right: 0;
@@ -52,4 +54,8 @@
     margin-bottom: 4px;
     transition-duration: 0.1s;
     transition-timing-function: ease-out-back;
+}
+    
+.textField:focus .unity-label {
+    color: rgb(200,80,80);
 }

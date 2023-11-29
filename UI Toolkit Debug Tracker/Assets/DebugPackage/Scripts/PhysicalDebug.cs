@@ -115,7 +115,16 @@ public class PhysicalDebug : MonoBehaviour
     private void RefreshIcon()
     {
         _visual.sprite = _sprites[(int)_custom.data._iconType];
-        _visual.transform.localScale = _custom.data._iconSize;
+        if (_custom.data._iconType == DebugCustomiser.IconType.Default)
+        {
+            _visual.drawMode = SpriteDrawMode.Sliced;
+            _visual.size = _custom.data._iconSize * 0.0625f;
+        }
+        else
+        {
+            _visual.drawMode = SpriteDrawMode.Simple;
+            _visual.transform.localScale = _custom.data._iconSize;
+        }
     }
 
     /// <summary>

@@ -13,6 +13,7 @@ public class DebugTabs : MonoBehaviour
     }
     // Debugs
     public DebugCustomiser _custom;
+    public DebugAdder _adder;
     public DebugViewer _viewer;
     public DebugEditor _editor;
     // Documents
@@ -48,12 +49,37 @@ public class DebugTabs : MonoBehaviour
     private void Update()
     {
         _doc.enabled = _custom.data._showUI;
-        if (Input.GetKeyDown(_custom.data._createKey))
-            SelectTab(Tabs.Create);
-        else if (Input.GetKeyDown(_custom.data._editKey))
-            SelectTab(Tabs.Edit);
-        else if (Input.GetKeyDown(_custom.data._viewKey))
-            SelectTab(Tabs.View);
+        if (AltTabKey())
+        {
+            if (Input.GetKeyDown(_custom.data._createKey))
+                SelectTab(Tabs.Create);
+            else if (Input.GetKeyDown(_custom.data._editKey))
+                SelectTab(Tabs.Edit);
+            else if (Input.GetKeyDown(_custom.data._viewKey))
+                SelectTab(Tabs.View);
+        }
+    }
+
+    private bool AltTabKey()
+    {
+        if (!_custom)
+            return false;
+        switch (_custom.data._tabKey)
+        {
+            case AltKeyCode.LeftControl:
+                return Input.GetKey(KeyCode.LeftControl);
+            case AltKeyCode.RightControl:
+                return Input.GetKey(KeyCode.RightControl);
+            case AltKeyCode.LeftAlt:
+                return Input.GetKey(KeyCode.LeftAlt);
+            case AltKeyCode.RightAlt:
+                return Input.GetKey(KeyCode.RightAlt);
+            case AltKeyCode.LeftShift:
+                return Input.GetKey(KeyCode.LeftShift);
+            case AltKeyCode.RightShift:
+                return Input.GetKey(KeyCode.RightShift);
+        }
+        return false;
     }
 
     /// <summary>
@@ -87,7 +113,8 @@ public class DebugTabs : MonoBehaviour
     /// <param name="tab">Tabs Enum of chosen tab</param>
     public void SelectTab(Tabs tab)
     {
-        if (tab == _selectedTab) tab = Tabs.None;
+        if (tab == _selectedTab) 
+            tab = Tabs.None;
         _selectedTab = tab;
         _createDoc.rootVisualElement.visible= tab == Tabs.Create;
         _editDoc.rootVisualElement.visible = tab == Tabs.Edit;

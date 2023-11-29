@@ -29,6 +29,15 @@ public struct DebugInstance
         machine = _ma;
     }
 }
+public enum AltKeyCode
+{
+    LeftControl,
+    RightControl,
+    LeftAlt,
+    RightAlt,
+    LeftShift,
+    RightShift
+}
 
 public enum DebugType
 {

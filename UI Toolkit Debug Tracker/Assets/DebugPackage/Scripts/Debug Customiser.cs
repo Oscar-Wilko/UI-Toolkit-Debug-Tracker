@@ -11,7 +11,8 @@ public class DebugCustomiser : MonoBehaviour
     {
         Circle,
         Box,
-        Pillar
+        Pillar,
+        Default
     }
 
     [Serializable]
@@ -31,11 +32,14 @@ public class DebugCustomiser : MonoBehaviour
         public bool _showCB;
         public bool _showDebugs;
         public Color _titleColour;
+        public AltKeyCode _tabKey;
         public KeyCode _createKey;
         public KeyCode _editKey;
         public KeyCode _viewKey;
         public KeyCode _panKey;
         public KeyCode _fastKey;
+        public AltKeyCode _altDebugKey;
+        public KeyCode _debugKey;
         public bool _showUI;
         public bool _lockX;
 
@@ -48,11 +52,14 @@ public class DebugCustomiser : MonoBehaviour
             _showCB = data._showCB;
             _showDebugs = data._showDebugs;
             _titleColour = data._titleColour;
+            _tabKey = data._tabKey;
             _createKey = data._createKey;
             _editKey = data._editKey;
             _viewKey = data._viewKey;
             _panKey = data._panKey;
             _fastKey = data._fastKey;
+            _altDebugKey = data._altDebugKey;
+            _debugKey = data._debugKey;
             _showUI = data._showUI;
             _lockX = data._lockX;
         }

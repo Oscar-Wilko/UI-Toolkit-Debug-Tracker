@@ -98,7 +98,7 @@ public class DebugViewer : MonoBehaviour
             {
                 if (_tabs._selectedTab != DebugTabs.Tabs.Edit)
                     _tabs.SelectTab(DebugTabs.Tabs.Edit);
-                _editor.ViewSelectDebug(_manager.GetDebugs().IndexOf(debug._data));
+                _editor.ViewSelectDebug(_manager.GetDebugsInScene().IndexOf(debug._data));
             }
         }
     }

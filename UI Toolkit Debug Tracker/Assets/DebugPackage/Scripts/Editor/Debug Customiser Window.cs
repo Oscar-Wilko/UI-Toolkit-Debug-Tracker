@@ -22,11 +22,14 @@ public class DebugCustomiserWindow : EditorWindow
     private Toggle _showDebugs;
     private Toggle _showUI;
     private Toggle _lockX;
+    private EnumField _tabKey;
     private EnumField _createKey;
     private EnumField _editKey;
     private EnumField _viewKey;
     private EnumField _fastKey;
     private EnumField _panKey;
+    private EnumField _altDebugKey;
+    private EnumField _debugKey;
     private Button _resetButton;
     private Button _refreshButton;
 
@@ -40,11 +43,14 @@ public class DebugCustomiserWindow : EditorWindow
     private const string r_showDebugs = "ShowDebugs";
     private const string r_showUI = "ShowUI";
     private const string r_lockX = "LockX";
+    private const string r_tabKey = "TabKey";
     private const string r_createKey = "CreateKey";
     private const string r_editKey = "EditKey";
     private const string r_viewKey = "ViewKey";
     private const string r_fastKey = "FastKey";
     private const string r_panKey = "PanKey";
+    private const string r_altDebugKey = "AltDebugKey";
+    private const string r_debugKey = "DebugKey";
     private const string r_resetButton = "ResetButton";
     private const string r_refreshButton = "RefreshButton";
 
@@ -94,11 +100,14 @@ public class DebugCustomiserWindow : EditorWindow
         _showDebugs = rootVisualElement.Q<Toggle>(r_showDebugs);
         _showUI = rootVisualElement.Q<Toggle>(r_showUI);
         _lockX = rootVisualElement.Q<Toggle>(r_lockX);
+        _tabKey = rootVisualElement.Q<EnumField>(r_tabKey);
         _createKey = rootVisualElement.Q<EnumField>(r_createKey);
         _editKey = rootVisualElement.Q<EnumField>(r_editKey);
         _viewKey = rootVisualElement.Q<EnumField>(r_viewKey);
         _fastKey = rootVisualElement.Q<EnumField>(r_fastKey);
         _panKey = rootVisualElement.Q<EnumField>(r_panKey);
+        _altDebugKey = rootVisualElement.Q<EnumField>(r_altDebugKey);
+        _debugKey = rootVisualElement.Q<EnumField>(r_debugKey);
         _resetButton = rootVisualElement.Q<Button>(r_resetButton);
         _refreshButton = rootVisualElement.Q<Button>(r_refreshButton);
     }
@@ -145,11 +154,14 @@ public class DebugCustomiserWindow : EditorWindow
         _showCB.value = data._showCB;
         _showDebugs.value = data._showDebugs;
         _titleColour.value = data._titleColour;
+        _tabKey.value = data._tabKey;
         _createKey.value = data._createKey;
         _editKey.value = data._editKey;
         _viewKey.value = data._viewKey;
         _fastKey.value = data._fastKey;
         _panKey.value = data._panKey;
+        _altDebugKey.value = data._altDebugKey;
+        _debugKey.value = data._debugKey;
         _showUI.value = data._showUI;
         _lockX.value = data._lockX;
     }
@@ -174,11 +186,14 @@ public class DebugCustomiserWindow : EditorWindow
         data._showCB = _showCB.value;
         data._showDebugs = _showDebugs.value;
         data._titleColour = _titleColour.value;
+        data._tabKey = (AltKeyCode)_tabKey.value;
         data._createKey = (KeyCode)_createKey.value;
         data._editKey = (KeyCode)_editKey.value;
         data._viewKey = (KeyCode)_viewKey.value;
         data._fastKey = (KeyCode)_fastKey.value;
         data._panKey = (KeyCode)_panKey.value;
+        data._altDebugKey = (AltKeyCode)_altDebugKey.value;
+        data._debugKey = (KeyCode)_debugKey.value;
         data._showUI = _showUI.value;
         data._lockX = _lockX.value;
     }
