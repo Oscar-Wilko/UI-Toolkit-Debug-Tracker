@@ -149,6 +149,21 @@
             "urgency": 1,
             "author": "John A.",
             "machine": "Device: 1126913 (AlphaSync)\nOS: Windows 10  (10.0.19045) 64bit\nCPU: AMD Ryzen 5 3400G with Radeon Vega Graphics \nGPU: NVIDIA GeForce GTX 1650\nRAM: 14267MB"
+        },
+        {
+            "type": 4,
+            "title": "Falls Through Map",
+            "description": "When walking up stairs player falls through the map with no kill floor.",
+            "date": "09/01/2024 14:21:54",
+            "position": [
+                -5.827589988708496,
+                2.25,
+                2.540053367614746
+            ],
+            "scene": "SampleScene",
+            "urgency": 0,
+            "author": "Geoff",
+            "machine": "Device: 1126913 (AlphaSync)\nOS: Windows 10  (10.0.19045) 64bit\nCPU: AMD Ryzen 5 3400G with Radeon Vega Graphics \nGPU: NVIDIA GeForce GTX 1650\nRAM: 14267MB"
         }
     ]
 }

@@ -1,0 +1,49 @@
+{
+    "list": [
+        {
+            "type": 0,
+            "title": "First Bug Found",
+            "description": "Enemies cannot reach here with AI movement. [Editted[",
+            "date": "29/11/2023 16:12:41",
+            "position": [
+                -4.6309003829956059,
+                2.676419734954834,
+                -8.843092918395996
+            ],
+            "scene": "SampleScene",
+            "urgency": 1,
+            "author": "Oscar Wilkinson",
+            "machine": "Device: 1126913 (AlphaSync)\nOS: Windows 10  (10.0.19045) 64bit\nCPU: AMD Ryzen 5 3400G with Radeon Vega Graphics \nGPU: NVIDIA GeForce GTX 1650\nRAM: 14267MB"
+        },
+        {
+            "type": 4,
+            "title": "Light Here",
+            "description": "Make light here for design choice.",
+            "date": "29/11/2023 16:13:51",
+            "position": [
+                8.316492080688477,
+                9.258036613464356,
+                11.74644947052002
+            ],
+            "scene": "SampleScene",
+            "urgency": 0,
+            "author": "Oscar Wilkinson",
+            "machine": "Device: 1126913 (AlphaSync)\nOS: Windows 10  (10.0.19045) 64bit\nCPU: AMD Ryzen 5 3400G with Radeon Vega Graphics \nGPU: NVIDIA GeForce GTX 1650\nRAM: 14267MB"
+        },
+        {
+            "type": 1,
+            "title": "Error in other scene",
+            "description": "Error right here",
+            "date": "29/11/2023 16:14:33",
+            "position": [
+                -5.778581142425537,
+                2.25,
+                3.0013084411621095
+            ],
+            "scene": "SecondScene",
+            "urgency": 2,
+            "author": "Other User",
+            "machine": "Device: 1126913 (AlphaSync)\nOS: Windows 10  (10.0.19045) 64bit\nCPU: AMD Ryzen 5 3400G with Radeon Vega Graphics \nGPU: NVIDIA GeForce GTX 1650\nRAM: 14267MB"
+        }
+    ]
+}
